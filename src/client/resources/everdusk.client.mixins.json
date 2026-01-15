@@ -3,12 +3,17 @@
   "package": "archives.tater.everdusk.mixin.client",
   "compatibilityLevel": "JAVA_25",
   "client": [
-    "ExampleClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "ClientLevelMixin"
-  ]
+    "ClientLevelMixin",
+    "LevelRendererAccessor",
+    "LevelRendererMixin",
+    "SkyRendererMixin"
+  ],
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  }
 }

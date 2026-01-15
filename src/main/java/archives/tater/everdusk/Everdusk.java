@@ -1,5 +1,7 @@
 package archives.tater.everdusk;
 
+import archives.tater.everdusk.registry.EverduskEnvironment;
+
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.core.registries.Registries;
@@ -29,7 +31,6 @@ public class Everdusk implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-
-		LOGGER.info("Hello Fabric world!");
+		EverduskEnvironment.init();
 	}
 }

@@ -2,6 +2,7 @@
   "values": [
     "#minecraft:universal",
     "minecraft:moon",
-    "everdusk:sky"
+    "everdusk:sky",
+    "everdusk:sun"
   ]
 }
