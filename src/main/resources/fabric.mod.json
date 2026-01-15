@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "eternalsunset",
+	"id": "everdusk",
 	"version": "${version}",
-	"name": "EternalSunset",
+	"name": "Everdusk",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -12,23 +12,23 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/eternalsunset/icon.png",
+	"icon": "assets/everdusk/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"archives.tater.eternalsunset.EternalSunset"
+			"archives.tater.everdusk.Everdusk"
 		],
 		"client": [
-			"archives.tater.eternalsunset.EternalSunsetClient"
+			"archives.tater.everdusk.EverduskClient"
 		],
 		"fabric-datagen": [
-			"archives.tater.eternalsunset.EternalSunsetDataGenerator"
+			"archives.tater.everdusk.EverduskDataGenerator"
 		]
 	},
 	"mixins": [
-		"eternalsunset.mixins.json",
+		"everdusk.mixins.json",
 		{
-			"config": "eternalsunset.client.mixins.json",
+			"config": "everdusk.client.mixins.json",
 			"environment": "client"
 		}
 	],

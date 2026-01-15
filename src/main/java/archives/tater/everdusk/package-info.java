@@ -1,4 +1,4 @@
 @NullMarked
-package archives.tater.eternalsunset;
+package archives.tater.everdusk;
 
 import org.jspecify.annotations.NullMarked;

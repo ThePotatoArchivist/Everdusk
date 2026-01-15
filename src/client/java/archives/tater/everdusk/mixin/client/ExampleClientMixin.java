@@ -1,4 +1,4 @@
-package archives.tater.eternalsunset.mixin.client;
+package archives.tater.everdusk.mixin.client;
 
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;

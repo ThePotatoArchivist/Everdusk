@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "archives.tater.eternalsunset.mixin",
+	"package": "archives.tater.everdusk.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"ExampleMixin"

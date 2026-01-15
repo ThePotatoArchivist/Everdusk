@@ -1,4 +1,4 @@
-package archives.tater.eternalsunset;
+package archives.tater.everdusk;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -10,8 +10,8 @@ import net.minecraft.world.level.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class EternalSunset implements ModInitializer {
-	public static final String MOD_ID = "eternalsunset";
+public class Everdusk implements ModInitializer {
+	public static final String MOD_ID = "everdusk";
 
     public static Identifier id(String path) {
         return Identifier.fromNamespaceAndPath(MOD_ID, path);
@@ -22,7 +22,7 @@ public class EternalSunset implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-    public static final ResourceKey<Level> SUNSET = ResourceKey.create(Registries.DIMENSION, id("sunset"));
+    public static final ResourceKey<Level> EVERDUSK = ResourceKey.create(Registries.DIMENSION, id("everdusk"));
 
 	@Override
 	public void onInitialize() {
