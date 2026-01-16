@@ -29,6 +29,14 @@ public class EverduskEnvironment {
                     .syncable()
     );
 
+    public static final EnvironmentAttribute<Boolean> OVERRIDE_SHADING = register(
+            "visual/override_shading",
+            EnvironmentAttribute.builder(AttributeTypes.BOOLEAN)
+                    .defaultValue(false)
+                    .notPositional()
+                    .syncable()
+    );
+
     public static final EnvironmentAttribute<Float> SECTION_REFRESH_FREQUENCY = register(
             "visual/section_refresh_frequency",
             EnvironmentAttribute.builder(AttributeTypes.FLOAT)

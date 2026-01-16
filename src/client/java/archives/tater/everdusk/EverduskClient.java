@@ -17,7 +17,9 @@ public class EverduskClient implements ClientModInitializer {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 
 		ClientTickEvents.END_LEVEL_TICK.register(level -> {
-			if (level.getOverworldClockTime() % level.environmentAttributes().getDimensionValue(EverduskEnvironment.SECTION_REFRESH_FREQUENCY).intValue() == 0)
+			var sectionRefresh = level.environmentAttributes().getDimensionValue(EverduskEnvironment.SECTION_REFRESH_FREQUENCY).intValue();
+			if (sectionRefresh == 0) return;
+			if (level.getOverworldClockTime() % sectionRefresh == 0)
 				for (var section : ((LevelRendererAccessor) Minecraft.getInstance().levelRenderer).getViewArea().sections) {
 					section.setDirty(false);
 				}

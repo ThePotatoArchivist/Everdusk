@@ -23,7 +23,9 @@ public class ClientLevelMixin {
             method = "getShade",
             at = @At("RETURN")
     )
-    private float modifyShade(float original, @Local(argsOnly = true) Direction direction) {
-        return original * environmentAttributes.getDimensionValue(EverduskEnvironment.DIRECTION_SHADES.get(direction));
+    private float modifyShade(float original, @Local(argsOnly = true) Direction direction, @Local(argsOnly = true) boolean shade) {
+        return environmentAttributes.getDimensionValue(EverduskEnvironment.OVERRIDE_SHADING) && shade
+                ? environmentAttributes.getDimensionValue(EverduskEnvironment.DIRECTION_SHADES.get(direction))
+                : original;
     }
 }
