@@ -5,20 +5,20 @@
     "everdusk:visual/shade_east": {
       "keyframes": [
         {
-          "ticks": 0,
-          "value": 0.2
-        },
-        {
           "ticks": 6000,
-          "value": 0.4
+          "value": 0
         },
         {
-          "ticks": 12000,
+          "ticks": 9000,
+          "value": 1.0
+        },
+        {
+          "ticks": 15000,
           "value": 1.0
         },
         {
           "ticks": 18000,
-          "value": 0.4
+          "value": 0
         }
       ],
       "modifier": "multiply"
@@ -26,20 +26,20 @@
     "everdusk:visual/shade_west": {
       "keyframes": [
         {
-          "ticks": 0,
+          "ticks": 3000,
           "value": 1.0
         },
         {
           "ticks": 6000,
-          "value": 0.4
-        },
-        {
-          "ticks": 12000,
-          "value": 0.2
+          "value": 0.0
         },
         {
           "ticks": 18000,
-          "value": 0.4
+          "value": 0.0
+        },
+        {
+          "ticks": 21000,
+          "value": 1.0
         }
       ],
       "modifier": "multiply"
@@ -48,18 +48,18 @@
       "keyframes": [
         {
           "ticks": 0,
-          "value": 0.4
-        },
-        {
-          "ticks": 6000,
-          "value": 0.2
+          "value": 0
         },
         {
           "ticks": 12000,
-          "value": 0.4
+          "value": 0
         },
         {
-          "ticks": 18000,
+          "ticks": 15000,
+          "value": 1.0
+        },
+        {
+          "ticks": 21000,
           "value": 1.0
         }
       ],
@@ -69,19 +69,19 @@
       "keyframes": [
         {
           "ticks": 0,
-          "value": 0.4
+          "value": 0.0
         },
         {
-          "ticks": 6000,
+          "ticks": 3000,
+          "value": 1.0
+        },
+        {
+          "ticks": 9000,
           "value": 1.0
         },
         {
           "ticks": 12000,
-          "value": 0.4
-        },
-        {
-          "ticks": 18000,
-          "value": 0.2
+          "value": 0
         }
       ],
       "modifier": "multiply"

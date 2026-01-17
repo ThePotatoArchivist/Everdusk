@@ -8,11 +8,21 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.Direction;
+import net.minecraft.util.LightCoordsUtil;
 
 public class EverduskClient implements ClientModInitializer {
 	public static final RenderStateDataKey<Float> SUN_YAW = RenderStateDataKey.create(() -> "everdusk:sun_yaw");
 
-	@Override
+    public static int getModifiedLight(int original, Direction direction) {
+        var level = Minecraft.getInstance().level;
+        if (level == null) return original;
+        float shade = level.environmentAttributes().getDimensionValue(EverduskEnvironment.DIRECTION_SHADES.get(direction));
+        if (shade == 1f) return original;
+        return LightCoordsUtil.pack(LightCoordsUtil.block(original), (int) (shade * LightCoordsUtil.sky(original)));
+    }
+
+    @Override
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 

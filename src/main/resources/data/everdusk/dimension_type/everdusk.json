@@ -45,14 +45,14 @@
     "minecraft:gameplay/sky_light_level": 8,
     "minecraft:visual/moon_angle": 360,
     "minecraft:visual/sky_light_color": "#d25133",
-    "minecraft:visual/sky_light_factor": 0.24,
+    "minecraft:visual/sky_light_factor": 0.5,
     "minecraft:visual/star_angle": 180,
     "minecraft:visual/star_brightness": 0.5,
     "minecraft:visual/sun_angle": 85,
 
     "everdusk:visual/override_shading": true,
-    "everdusk:visual/shade_up": 0.6,
-    "everdusk:visual/shade_down": 0.6,
+    "everdusk:visual/shade_up": 0.3,
+    "everdusk:visual/shade_down": 0,
     "everdusk:visual/section_refresh_frequency": 330
   },
   "coordinate_scale": 1,
