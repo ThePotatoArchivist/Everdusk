@@ -14,12 +14,18 @@ import net.minecraft.util.LightCoordsUtil;
 public class EverduskClient implements ClientModInitializer {
 	public static final RenderStateDataKey<Float> SUN_YAW = RenderStateDataKey.create(() -> "everdusk:sun_yaw");
 
-    public static int getModifiedLight(int original, Direction direction) {
+	public static int withSky(final int coords, final int sky) {
+		return coords & 0xF0 | sky << 20;
+	}
+
+	public static int getModifiedLight(int original, Direction direction) {
         var level = Minecraft.getInstance().level;
         if (level == null) return original;
-        float shade = level.environmentAttributes().getDimensionValue(EverduskEnvironment.DIRECTION_SHADES.get(direction));
+
+        float shade = level.environmentAttributes().getDimensionValue(EverduskEnvironment.getShade(direction));
         if (shade == 1f) return original;
-        return LightCoordsUtil.pack(LightCoordsUtil.block(original), (int) (shade * LightCoordsUtil.sky(original)));
+
+        return withSky(original, (int) (shade * LightCoordsUtil.sky(original)));
     }
 
     @Override

@@ -9,15 +9,21 @@ import net.minecraft.world.attribute.AttributeRange;
 import net.minecraft.world.attribute.AttributeTypes;
 import net.minecraft.world.attribute.EnvironmentAttribute;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 public class EverduskEnvironment {
 
     private static <T> EnvironmentAttribute<T> register(final String path, final EnvironmentAttribute.Builder<T> attributeBuilder) {
         return Registry.register(BuiltInRegistries.ENVIRONMENT_ATTRIBUTE, Everdusk.id(path), attributeBuilder.build());
+    }
+
+    private static EnvironmentAttribute<Float> registerShade(Direction direction) {
+        return register(
+                "visual/shade_" + direction.getName(),
+                EnvironmentAttribute.builder(AttributeTypes.FLOAT)
+                        .defaultValue(1f)
+                        .spatiallyInterpolated()
+                        .valueRange(AttributeRange.UNIT_FLOAT)
+                        .syncable()
+        );
     }
 
     public static final EnvironmentAttribute<Float> SUN_YAW = register(
@@ -45,18 +51,23 @@ public class EverduskEnvironment {
                     .syncable()
     );
 
-    public static final Map<Direction, EnvironmentAttribute<Float>> DIRECTION_SHADES =
-            Arrays.stream(Direction.values()).collect(Collectors.toMap(
-                    Function.identity(),
-                    direction -> register(
-                            "visual/shade_" + direction.getName(),
-                            EnvironmentAttribute.builder(AttributeTypes.ANGLE_DEGREES)
-                                    .defaultValue(1f)
-                                    .spatiallyInterpolated()
-                                    .valueRange(AttributeRange.UNIT_FLOAT)
-                                    .syncable()
-                    )
-            ));
+    public static final EnvironmentAttribute<Float> SHADE_DOWN = registerShade(Direction.DOWN);
+    public static final EnvironmentAttribute<Float> SHADE_UP = registerShade(Direction.UP);
+    public static final EnvironmentAttribute<Float> SHADE_NORTH = registerShade(Direction.NORTH);
+    public static final EnvironmentAttribute<Float> SHADE_SOUTH = registerShade(Direction.SOUTH);
+    public static final EnvironmentAttribute<Float> SHADE_WEST = registerShade(Direction.WEST);
+    public static final EnvironmentAttribute<Float> SHADE_EAST = registerShade(Direction.EAST);
+
+    public static EnvironmentAttribute<Float> getShade(Direction direction) {
+        return switch (direction) {
+            case DOWN -> SHADE_DOWN;
+            case UP -> SHADE_UP;
+            case NORTH -> SHADE_NORTH;
+            case SOUTH -> SHADE_SOUTH;
+            case WEST -> SHADE_WEST;
+            case EAST -> SHADE_EAST;
+        };
+    }
 
     public static void init() {
 
