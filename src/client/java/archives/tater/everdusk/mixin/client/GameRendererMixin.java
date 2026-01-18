@@ -1,7 +1,6 @@
 package archives.tater.everdusk.mixin.client;
 
 import archives.tater.everdusk.client.DirectionalLighting;
-import archives.tater.everdusk.registry.EverduskEnvironment;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import org.spongepowered.asm.mixin.Final;
@@ -18,9 +17,6 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.client.renderer.state.LightmapRenderState;
-import net.minecraft.util.Mth;
-
-import org.joml.Vector3f;
 
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
@@ -43,8 +39,7 @@ public class GameRendererMixin {
     private void updateNoSkyLightmap(DeltaTracker deltaTracker, CallbackInfo ci, @Local(name = "deltaPartialTick") float deltaPartialTick) {
         DirectionalLighting.updateLightmap(lightmapRenderState);
 
-        var sunYaw = mainCamera.attributeProbe().getValue(EverduskEnvironment.SUN_YAW, deltaPartialTick) * Mth.DEG_TO_RAD;
-        var lightDirection = new Vector3f(-1, 0, 0).rotateY(sunYaw);
+        var lightDirection = DirectionalLighting.getLightVector(deltaPartialTick, mainCamera.attributeProbe());
         try (var view = RenderSystem.getDevice().createCommandEncoder().mapBuffer(DirectionalLighting.LIGHT_DIRECTION_UBO.currentBuffer(), false, true)) {
             Std140Builder.intoBuffer(view.data()).putVec3(lightDirection);
         }

@@ -31,7 +31,7 @@ void main() {
     cylindricalVertexDistance = fog_cylindrical_distance(pos);
     vec4 skyLightColor = minecraft_sample_lightmap(Sampler2, UV2);
     vec4 noSkyLightColor = minecraft_sample_lightmap(NoSkyLightmap, UV2);
-    float amount = clamp(dot(Normal, lightDirection.direction), 0, 1);
+    float amount = clamp(0.5 + dot(Normal, lightDirection.direction), 0, 1);
 //    vertexColor = vec4(lightDirection.direction, 1);
     vertexColor = Color * mix(noSkyLightColor, skyLightColor, amount);
 //    vertexColor = Color * noSkyLightColor;
