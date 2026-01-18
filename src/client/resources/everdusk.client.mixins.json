@@ -8,11 +8,13 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "AmbientOcclusionRenderStorageMixin",
+    "ChunkSectionsToRenderMixin",
     "ClientLevelMixin",
+    "DebugScreenOverlayMixin",
+    "GameRendererMixin",
     "LevelRendererAccessor",
     "LevelRendererMixin",
-    "ModelBlockRendererMixin",
+    "RenderPhaseMixin",
     "SkyRendererMixin"
   ],
   "mixinextras": {

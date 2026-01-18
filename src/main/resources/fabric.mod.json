@@ -39,6 +39,5 @@
 		"fabric-api": "*"
 	},
 	"custom": {
-		"fabric-renderer-api-v1:contains_renderer": {}
 	}
 }
