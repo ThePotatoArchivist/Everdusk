@@ -13,7 +13,6 @@ in ivec2 UV2;
 in vec3 Normal;
 
 uniform sampler2D Sampler2;
-uniform sampler2D NoSkyLightmap;
 layout(std140) uniform LightDirection {
     vec3 direction;
 } lightDirection;
@@ -23,6 +22,10 @@ out float cylindricalVertexDistance;
 out vec4 vertexColor;
 out vec2 texCoord0;
 
+bool isZero(vec3 v) {
+    return v.x == 0 && v.y == 0 && v.z == 0;
+}
+
 void main() {
     vec3 pos = Position + (ChunkPosition - CameraBlockPos) + CameraOffset;
     gl_Position = ProjMat * ModelViewMat * vec4(pos, 1.0);
@@ -30,8 +33,8 @@ void main() {
     sphericalVertexDistance = fog_spherical_distance(pos);
     cylindricalVertexDistance = fog_cylindrical_distance(pos);
     vec4 skyLightColor = minecraft_sample_lightmap(Sampler2, UV2);
-    vec4 noSkyLightColor = minecraft_sample_lightmap(NoSkyLightmap, UV2);
-    float amount = clamp(0.5 + dot(Normal, lightDirection.direction), 0, 1);
+    vec4 noSkyLightColor = minecraft_sample_lightmap(Sampler2, ivec2(UV2.x, 0));
+    float amount = isZero(lightDirection.direction) ? 1 : clamp(0.3 + dot(Normal, lightDirection.direction), 0, 1);
 //    vertexColor = vec4(lightDirection.direction, 1);
     vertexColor = Color * mix(noSkyLightColor, skyLightColor, amount);
 //    vertexColor = Color * noSkyLightColor;

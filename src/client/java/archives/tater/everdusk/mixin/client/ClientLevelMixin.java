@@ -22,6 +22,6 @@ public class ClientLevelMixin {
             at = @At("RETURN")
     )
     private float modifyShade(float original) {
-        return environmentAttributes.getDimensionValue(EverduskEnvironment.OVERRIDE_SHADING) ? 1f : original;
+        return environmentAttributes.getDimensionValue(EverduskEnvironment.NO_SHADING) ? 1f : original;
     }
 }

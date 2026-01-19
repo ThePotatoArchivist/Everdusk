@@ -21,7 +21,6 @@ public class RenderPhaseMixin {
     )
     private static RenderPipeline.Builder modifyTerrainSnippet(RenderPipeline.Builder original) {
         return original
-                .withUniform("LightDirection", UniformType.UNIFORM_BUFFER)
-                .withSampler("NoSkyLightmap");
+                .withUniform("LightDirection", UniformType.UNIFORM_BUFFER);
     }
 }

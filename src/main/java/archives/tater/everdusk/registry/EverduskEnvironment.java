@@ -35,39 +35,21 @@ public class EverduskEnvironment {
                     .syncable()
     );
 
-    public static final EnvironmentAttribute<Boolean> OVERRIDE_SHADING = register(
-            "visual/override_shading",
+    public static final EnvironmentAttribute<Boolean> NO_SHADING = register(
+            "visual/no_shading",
             EnvironmentAttribute.builder(AttributeTypes.BOOLEAN)
                     .defaultValue(false)
                     .notPositional()
                     .syncable()
     );
 
-    public static final EnvironmentAttribute<Float> SECTION_REFRESH_FREQUENCY = register(
-            "visual/section_refresh_frequency",
-            EnvironmentAttribute.builder(AttributeTypes.FLOAT)
-                    .defaultValue(0f)
+    public static final EnvironmentAttribute<Boolean> DIRECTIONAL_SKY_LIGHT = register(
+            "visual/directional_sky_light",
+            EnvironmentAttribute.builder(AttributeTypes.BOOLEAN)
+                    .defaultValue(false)
                     .notPositional()
                     .syncable()
     );
-
-    public static final EnvironmentAttribute<Float> SHADE_DOWN = registerShade(Direction.DOWN);
-    public static final EnvironmentAttribute<Float> SHADE_UP = registerShade(Direction.UP);
-    public static final EnvironmentAttribute<Float> SHADE_NORTH = registerShade(Direction.NORTH);
-    public static final EnvironmentAttribute<Float> SHADE_SOUTH = registerShade(Direction.SOUTH);
-    public static final EnvironmentAttribute<Float> SHADE_WEST = registerShade(Direction.WEST);
-    public static final EnvironmentAttribute<Float> SHADE_EAST = registerShade(Direction.EAST);
-
-    public static EnvironmentAttribute<Float> getShade(Direction direction) {
-        return switch (direction) {
-            case DOWN -> SHADE_DOWN;
-            case UP -> SHADE_UP;
-            case NORTH -> SHADE_NORTH;
-            case SOUTH -> SHADE_SOUTH;
-            case WEST -> SHADE_WEST;
-            case EAST -> SHADE_EAST;
-        };
-    }
 
     public static void init() {
 

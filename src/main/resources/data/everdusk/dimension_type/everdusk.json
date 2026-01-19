@@ -51,10 +51,8 @@
     "minecraft:visual/star_brightness": 0.5,
     "minecraft:visual/sun_angle": 85,
 
-    "everdusk:visual/override_shading": true,
-    "everdusk:visual/shade_up": 0.4,
-    "everdusk:visual/shade_down": 0,
-    "everdusk:visual/section_refresh_frequency": 330
+    "everdusk:visual/no_shading": true,
+    "everdusk:visual/directional_sky_light": true
   },
   "coordinate_scale": 1,
   "default_clock": "minecraft:overworld",

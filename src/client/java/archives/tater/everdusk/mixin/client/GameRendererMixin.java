@@ -36,9 +36,7 @@ public class GameRendererMixin {
             method = "renderLevel",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/Lightmap;update(Lnet/minecraft/client/renderer/state/LightmapRenderState;)V")
     )
-    private void updateNoSkyLightmap(DeltaTracker deltaTracker, CallbackInfo ci, @Local(name = "deltaPartialTick") float deltaPartialTick) {
-        DirectionalLighting.updateLightmap(lightmapRenderState);
-
+    private void updateLightDirection(DeltaTracker deltaTracker, CallbackInfo ci, @Local(name = "deltaPartialTick") float deltaPartialTick) {
         var lightDirection = DirectionalLighting.getLightVector(deltaPartialTick, mainCamera.attributeProbe());
         try (var view = RenderSystem.getDevice().createCommandEncoder().mapBuffer(DirectionalLighting.LIGHT_DIRECTION_UBO.currentBuffer(), false, true)) {
             Std140Builder.intoBuffer(view.data()).putVec3(lightDirection);
@@ -50,7 +48,6 @@ public class GameRendererMixin {
             at = @At("TAIL")
     )
     private void closeUniforms(CallbackInfo ci) {
-        DirectionalLighting.NO_SKY_LIGHTMAP.close();
         DirectionalLighting.LIGHT_DIRECTION_UBO.close();
     }
 }
