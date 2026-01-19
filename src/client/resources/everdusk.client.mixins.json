@@ -13,6 +13,7 @@
     "GameRendererMixin",
     "LevelRendererAccessor",
     "LevelRendererMixin",
+    "LightingMixin",
     "RenderPhaseMixin",
     "SkyRendererMixin"
   ],
